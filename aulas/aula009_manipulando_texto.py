@@ -15,6 +15,7 @@ len(frase) # Vai mostrar o tamanho da frase, no caso, 21 caracteres.
 frase.count('o') # O programa irá contar quantos 'o' tem na frase, no caso, 3.
 frase.count('o', 0, 13) # Vai contar quantos 'o' tem da posição 0 a 13 (tirando a 13), no caso, 1.
 frase.find('deo') # O programa irá dizer a posição que ele encontrou o 'deo', no caso, 11.
+frase.rfind('') # O programa irá procurar o que você pediu, mas inciando do lado direito, por isso o 'r', de 'right'.
 frase.find('Android') # Quando ele não encontra o que foi pedido, ele retorna -1.
 'Curso' in frase # O in irá retornar True ou False
 
