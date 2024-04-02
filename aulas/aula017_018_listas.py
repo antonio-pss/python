@@ -18,14 +18,25 @@ café = lanche[:] # Isso sim faz uma cópia.
 
 # Listas Compostas
 
-p1 = ['Pedro', 25]
-p2 = ['Maria', 19]
-pessoas = []
-pessoas.append(p1[:])
-pessoas.append(p2[:])
+p1 = ['Pedro', 25] # Cria um lista/vetor composta.
+p2 = ['Maria', 19] # Cria um lista/vetor composta.
+pessoas = [] # Cria uma lista/vetor que será transformada em matriz.
+pessoas.append(p1[:]) # Adiciona a lista/vetor na posição 0 - Fazendo assim uma matriz composta.
+pessoas.append(p2[:]) # Adiciona a lista/vetor na posição 1 - Fazendo assim uma matriz composta.
 print(pessoas)
 
-refeições=[['Café', 6], ['Almoço', '12'], ['Lanche', 15], ['Janta', 19]]
-print(refeições)
-print(refeições[0][0])
-print(refeições[2])
+refeições=[['Café', 6], ['Almoço', 12], ['Lanche', 15], ['Janta', 19]] # Cria uma matriz composta [[]].
+print(refeições) # Mostra tudo.
+print(refeições[0][0]) # Mostra só a posição 0 da posição 0.
+print(refeições[2]) # Mostra toda a posição 2 sendo Lanche e 15.
+
+for l in refeições: # A variável p vira uma lista com as variáveis da posição específica da matriz.
+    print(f'O {l[0]} será ás {l[1]}') # Forma de mostrar as duas posições.
+
+amigos = []
+dado = list()
+for c in range(3):
+    dado.append(str(input('Nome: ')))
+    dado.append(int(input('Idade: ')))
+    amigos.append(dado[:]) # Faz a cópia.
+    dado.clear() # Limpa o dado.
