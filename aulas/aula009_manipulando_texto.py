@@ -9,6 +9,7 @@ frase[9:21:2] # O 2 significa que ele ira pular de 2 em 2, V, d, o, P, t, o.
 frase[:5] # Vai da posição 0 a 5, omitindo a 5º posição.
 frase[15:] # Vai da posição 15 até o final.
 frase[9::3] # Vai do 9 até final pulando 3 letras. V, e, P, h.
+frase[::-1] # Percorre o contrário. n, o, h, t, y, P...
 
 # ANÁLISE
 len(frase) # Vai mostrar o tamanho da frase, no caso, 21 caracteres.
