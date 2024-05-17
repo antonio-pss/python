@@ -39,7 +39,7 @@ clock = pygame.time.Clock()  # Aqui criamos um objeto 'Clock', ele ajustará o f
 # Regular Surface: Alguma imagem, cor ou texto. Precisa ser colocada em cima da Display Surface.
 
 # SUPERFÍCIE SIMPLES.
-# test_surface = pygame_tinti.Surface((100, 200))  # Criando uma superfície.
+# test_surface = pygame.Surface((100, 200))  # Criando uma superfície.
 # test_surface.fill('Red')  # Aqui preenchemos a superfície com alguma cor.
 # Essa cor é dada por um código RPG em uma tupla. Ex: (255, 255, 255).
 # Ou você pode dar uma string com o nome da cor em inglês. Ex: 'White'.
@@ -51,7 +51,7 @@ snail_surface = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 player_surface = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
 
 # FUNÇÃO CONVERT() e CONVERT_ALPHA()
-# Servem para mudar o tipo da variável em algo mais fácil de ultilizar pelo pygame_tinti.
+# Servem para mudar o tipo da variável em algo mais fácil de ultilizar pelo pygame.
 # Básicamente fazem o jogo rodar melhor.
 
 # CRIANDO TEXTO.
@@ -62,8 +62,8 @@ score_surface = score_font.render('Points: ', True, 'Black')
 # 1º Parâmetro == Texto, 2º Antialias (False or True), 3º Cor.
 # O Antialias é para deixar o texto mais 'redondo'.
 
-# RECTS - Pode ser criado com pygame_tinti.Rect(left, top, width, height)
-# Colocar as superfícies mais precisamente; Detectar colisões; Desenhar com pygame_tinti.draw().
+# RECTS - Pode ser criado com pygame.Rect(left, top, width, height)
+# Colocar as superfícies mais precisamente; Detectar colisões; Desenhar com pygame.draw().
 snail_rect = snail_surface.get_rect(bottomleft=(800, 300))
 player_rect = player_surface.get_rect(bottomleft=(100, 300))
 score_rect = score_surface.get_rect(topright=(750, 50))
@@ -79,13 +79,13 @@ while True:  # Para que o jogo rode, é necessário um loop infinito.
     for event in pygame.event.get():  # Vamos pegar uma variável 'event' em uma lista de eventos.
         # Esses eventos irão acontecer com os 'inputs' do jogador.
         if event.type == pygame.QUIT:  # Aqui verificamos se o tipo do evento que ocorreu foi uma saída.
-            pygame.quit()  # Essa linha é o oposto da linha pygame_tinti.init().
+            pygame.quit()  # Essa linha é o oposto da linha pygame.init().
             # Isso faz o 'motor' parar. Nos tirando várias funções e desligando o jogo.
-            # Mas o código continua mesmo após deligar o pygame_tinti.
+            # Mas o código continua mesmo após deligar o pygame.
             # Dará um erro se o código continuar.
             sys.exit()  # Para fechar o código, precisamos dessa linha.
 
-        # if event.type == pygame_tinti.MOUSEMOTION and player_rect.collidepoint(event.pos):
+        # if event.type == pygame.MOUSEMOTION and player_rect.collidepoint(event.pos):
 
     # As superfícies seguem uma hierarquia, quem é criada primeiro fica mais fundo na tela.
     screen.blit(background_surface, (0, 0))
@@ -109,7 +109,7 @@ while True:  # Para que o jogo rode, é necessário um loop infinito.
         # Para um jogo com pontos de vida, pode ser um problema, mas com uma só vida não tem problema.
         # Já que apos a primeira colisão vai parar o jogo.
 
-    # mouse_pos = pygame_tinti.mouse.get_pos()  # Pegando a posição x e y do mouse, devolvendo uma tupla (x, y)
+    # mouse_pos = pygame.mouse.get_pos()  # Pegando a posição x e y do mouse, devolvendo uma tupla (x, y)
     # if player_rect.collidepoint(mouse_pos):
 
     pygame.display.update()  # Aqui estamos atualizando a tela.
@@ -131,13 +131,13 @@ while True:  # Para que o jogo rode, é necessário um loop infinito.
 # left, mid, right
 
 # POSIÇÃO DO MOUSE: posição, clicks, visível e outros...
-# Com pygame_tinti.mouse:
-# Com pygame_tinti.mouse.get_pos() - Devolve uma tupla com posição x e y = (x, y).
-# Com pygame_tinti.mouse.get_pressed() - Devolve uma tupla com bool = (false, false, false) Botão esquerdo, meio e direito.
+# Com pygame.mouse:
+# Com pygame.mouse.get_pos() - Devolve uma tupla com posição x e y = (x, y).
+# Com pygame.mouse.get_pressed() - Devolve uma tupla com bool = (false, false, false) Botão esquerdo, meio e direito.
 
 # Com event loop:
-# if event.type == pygame_tinti.MOUSEMOTION:
-# if event.type == pygame_tinti.MOUSEBUTTON...:
+# if event.type == pygame.MOUSEMOTION:
+# if event.type == pygame.MOUSEBUTTON...:
 
 # EVENTS:
 # event.type
