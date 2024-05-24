@@ -62,3 +62,6 @@ Sendo 'direction' um vetor.
 - Dentro do if, um vetor retornará false se ele for (0, 0). Se não, retorna True. Por fim, se direction == False, faça a linha, se não continue.
 ### Groups
 - Podem desenhar (draw), atualizar (update) e organizar sprites.
+### Importação
+- Fazer importação (Ex: Imagens), é algo complicado.
+- Então é melhor você não fazer muitas, faça uma e guarde em uma variável.
