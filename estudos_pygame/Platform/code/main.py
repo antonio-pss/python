@@ -1,9 +1,13 @@
 from settings import *
 from sprites import *
+from groups import *
+from support import *
+from timer import Timer
 
 
 class Game:
     def __init__(self):
+        self.player = None
         pygame.init()
         self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
         pygame.display.set_caption('Platformer')
@@ -11,11 +15,29 @@ class Game:
         self.running = True
 
         # groups 
-        self.all_sprites = pygame.sprite.Group()
+        self.all_sprites = AllSprites()
         self.collision_sprites = pygame.sprite.Group()
 
-        # load game
+        # load
+        self.load_assets()
         self.setup()
+
+        # timer
+        self.bee_timer = Timer(200, func = self.create_bee, autostart=True)
+
+    def creat_bee(self):
+        Bee(self.bee_frames, (500, 600), self.all_sprites)
+
+    def load_assets(self):
+        # graphics
+        self.player_frames = import_folder('..', 'images', 'player')
+        self.bullet_surf = import_image('..', 'images', 'gun', 'bullet')
+        self.fire_surf = import_image('..', 'images', 'gun', 'fire')
+        self.bee_frames = import_folder('..', 'images', 'enemies', 'bee')
+        self.worm_frames = import_folder('..', 'images', 'enemies', 'worm')
+
+        # sounds
+        self.audio = audio_importer('..', 'audio')
 
     def setup(self):
         tmx_map = load_pygame(join('..', 'data', 'maps', 'world.tmx'))
@@ -28,7 +50,9 @@ class Game:
 
         for obj in tmx_map.get_layer_by_name('Entities'):
             if obj.name == 'Player':
-                Player((obj.x, obj.y), self.all_sprites, self.collision_sprites)
+                self.player = Player((obj.x, obj.y), self.all_sprites, self.collision_sprites, self.player_frames)
+
+        Worm(self.worm_frames, (500, 700), self.all_sprites)
 
     def run(self):
         while self.running:
@@ -39,11 +63,13 @@ class Game:
                     self.running = False 
             
             # update
+            self.bee_timer.update()
             self.all_sprites.update(dt)
+
 
             # draw 
             self.display_surface.fill(BG_COLOR)
-            self.all_sprites.draw(self.display_surface)
+            self.all_sprites.draw(self.player.rect.center)
             pygame.display.update()
         
         pygame.quit()
